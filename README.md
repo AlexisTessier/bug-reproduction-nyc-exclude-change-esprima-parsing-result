@@ -6,7 +6,13 @@
 
 ## Observed Behavior
 
+- I use [ava](https://www.npmjs.com/package/ava) for some tests
+- I run the command nyc ava
+- I have a test.js file which contain the following content
+
 ```javascript
+//test.js
+
 'use strict';
 
 const esprima = require('esprima');
@@ -48,20 +54,39 @@ console.log('------------------------------------');
 *        argument: [Object],∏
 *        prefix: true },
 *      Literal { type: 'Literal', value: 'option', raw: '\'option\'' } ] }
-*/javascript
+*/
 ```
 
 ## Bonus Points! Code (or Repository) that Reproduces Issue
 
+[https://github.com/AlexisTessier/bug-reproduction-nyc-exclude-change-esprima-parsing-result](https://github.com/AlexisTessier/bug-reproduction-nyc-exclude-change-esprima-parsing-result)
 
+```
+npm i //will install ava, nyc and esprima
+```
+
+Then use or not the nyc.exclude option in the package.json and :
+
+```
+npm run bug //it's just => nyc ava
+```
+
+If the bug isn't just on my machine, you should see different logs for the same value,
+depending if you active or not the option
+
+Also, ava will throw an error because test.js doesn't contains ava tests, but this one is normal.
 
 ## Forensic Information
 
-**Operating System:** the operating system you observed the issue on.
-**Environment Information:** information about your project's environment, see instructions below:
+**Operating System:** macOS Sierra Version 10.12.3
+**Environment Information:**
+- node v6.9.1
+- npm v3.10.8
 
 1. run the following script:
 
 sh -c 'node --version; npm --version; npm ls' > output.txt
 
 2. share a gist with the contents of output.txt.
+
+[https://gist.github.com/AlexisTessier/17bd56cd789c6fac95941c7676df68c6](https://gist.github.com/AlexisTessier/17bd56cd789c6fac95941c7676df68c6)
