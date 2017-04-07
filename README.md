@@ -1,3 +1,5 @@
+[https://github.com/istanbuljs/nyc/issues/549](https://github.com/istanbuljs/nyc/issues/549)
+
 ## Expected Behavior
 
 - When I use the nyc.exclude option defined in the package.json
